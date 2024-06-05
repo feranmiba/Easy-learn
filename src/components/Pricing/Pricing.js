@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 
 function Pricing() {
   return (
@@ -15,7 +16,7 @@ function Pricing() {
 
     <p className='mt-3'><b>$0</b></p>
 
-    <button className='mt-3 px-8 py-3 rounded-lg bg-[#306136]'>Start for free</button>
+   <Link to="/signup" ><button className='mt-3 px-8 py-3 rounded-lg bg-[#306136]'>Start for free</button></Link> 
     
     <ul className='mt-5'>
     <li className=' border-t-2 py-2'>Access to 2 courses</li>

@@ -3,13 +3,16 @@ import { Link } from 'react-router-dom'
 import Axios from "axios";
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { googleLogout, useGoogleLogin } from '@react-oauth/google';
+import { googleLogout, useGoogleLogin, } from '@react-oauth/google';
+import { BeatLoader } from 'react-spinners';
 
 
 function Login() {
   const api = process.env.REACT_APP_BACKEND;
   const navigate = useNavigate()
   const [ user, setUser ] = useState([]);
+  const [isLoading, setIsLoading] = useState(true)
+
 
 
   const [loginProfile, setLoginProfile] = useState({
@@ -20,12 +23,20 @@ function Login() {
   const [show, setShow] = useState(Boolean)
   const [errMesssage, setErrMessage] = useState("")
 
+
   const showErrorMessges = () => {
     setShow(!show)
     setTimeout(() => {
       setShow(false)
     }, 2000)
   } 
+
+  const loading = () => {
+    setIsLoading(false)
+    setTimeout(() => {
+      setIsLoading(true)
+    }, 2000)
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -34,11 +45,13 @@ function Login() {
       [name]: value
     }));
   };
+  
 
 
   const handleSubmit =  (e) => {
+    loading()
     e.preventDefault()
-   Axios.post(`${api}/login`, loginProfile).then(res => {
+   Axios.post(`http://localhost:3000/login`, loginProfile).then(res => {
     console.log(res.data)
     if (res.data.name) {
      navigate("/profiles", { state: {username: res.data.name, email:loginProfile.email}}) 
@@ -46,8 +59,7 @@ function Login() {
    }).catch(err => {
     setErrMessage(err.response.data.error)
     showErrorMessges()
-   });
- 
+   }); 
   }
 
 
@@ -105,17 +117,18 @@ function Login() {
 
     <div className='mt-5'>
     <p>Email</p>
-    <input type='email' placeholder='E-mail' className='w-[90%] p-3 mt-3 outline-none bg-transparent' name="email" value={loginProfile.email} onChange={handleChange}/>
+    <input type='email' placeholder='E-mail' className='w-[90%] p-3 mt-3 outline-none bg-transparent' name="email" value={loginProfile.email} onChange={handleChange} required/>
     </div>
 
     <div className='mt-5 mb-3'>
     <p>Password</p>
-    <input type='password' placeholder='Password' className='w-[90%] p-3 mt-3 outline-none bg-transparent' name="password" value={loginProfile.password} onChange={handleChange}/>
+    <input type='password' placeholder='Password' className='w-[90%] p-3 mt-3 outline-none bg-transparent' name="password" value={loginProfile.password} onChange={handleChange} required/>
     </div>
 
 
     <div className='flex flex-col text-white items-center gap-3'>
-    <button className=' bg-blue-950 rounded-xl p-3 w-[80%]' type='submit'>Login</button>
+    {isLoading ? ( <button className=' bg-blue-950 rounded-xl p-3 w-[80%]' type='submit'>Login</button>
+    ): ( <BeatLoader size={20} color='red' />)}
     <button className='bg-[#0652DD] p-3 rounded-xl w-[90%]'  onClick={() => signinWithGoogle()}>Login with Goggle</button>
     </div>
     <p className='text-center'>

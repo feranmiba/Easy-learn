@@ -2,7 +2,7 @@ import React from 'react'
 
 function Content() {
   return (
-    <div className='w-[65%] text-[#FAF2F2]'>
+    <div className='sm:w-[65%] text-[#FAF2F2]'>
       <section className='p-5 rounded-xl bg-[#2E303E] shadow-xl'>
       
 
@@ -15,7 +15,7 @@ function Content() {
       <div>
       <p>Note</p>
 
-      <p> bla bla bla bla bla blab bla bla bla bla bla blab bla bla bla bla bla blab bla bla bla bla bla blab bla bla bla bla bla blab bla bla bla bla bla blab bla bla bla bla bla blab bla bla bla bla bla blab bla bla bla bla bla blab bla bla bla bla bla blab bla bla bla bla bla blab bla bla bla bla bla blab bla bla bla bla bla blab bla bla bla bla bla blab bla bla bla bla bla blab bla bla bla bla bla blab </p>
+      <p> Coming soon </p>
       </div>
       
 
