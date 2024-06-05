@@ -51,7 +51,7 @@ function Login() {
   const handleSubmit =  (e) => {
     loading()
     e.preventDefault()
-   Axios.post(`http://localhost:3000/login`, loginProfile).then(res => {
+   Axios.post(`${api}/login`, loginProfile).then(res => {
     console.log(res.data)
     if (res.data.name) {
      navigate("/profiles", { state: {username: res.data.name, email:loginProfile.email}}) 

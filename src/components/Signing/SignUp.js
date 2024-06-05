@@ -99,25 +99,22 @@ const logOut = () => {
 
 
   return (
-    <motion.div  initial={{  opacity: 0}}
-    animate={{ opacity:1}}
-    transition={{ duration: 1.55}}>
+  <motion.div  initial={{  opacity: 0}} animate={{ opacity:1}} transition={{ duration: 1.55}}>
 
     <AnimatePresence mode='wait'  initial={false} >  
-    {show && (
-    <motion.div initial={{opacity:0, x:-10}} animate={{opacity:1, x:0}} exit={{ opacity:0, x:-10}} transition={{duration: 0.6}}className='flex justify-end px-5 mt-2'>
-    <p className='border px-10 py-5 bg-white rounded-lg'>{errMesssage}</p>
-    </motion.div>)}
+      {show && (
+      <motion.div initial={{opacity:0, x:-10}} animate={{opacity:1, x:0}} exit={{ opacity:0, x:-10}} transition={{duration: 0.6}}className='flex justify-end px-5 mt-2'>
+      <p className='border px-10 py-5 bg-white rounded-lg'>{errMesssage}</p>
+      </motion.div>)}
     </AnimatePresence>
 
     <section className=' flex justify-center items-center text-lg py-10'>
-        <form  onSubmit={handleSubmit}   className='w-[80%] px-6 md:px-10 py-3 md:w-[40%] rounded-xl shadow-2xl text-[#FAF2F2] bg-[#2E303E]' >
+        <form onSubmit={handleSubmit} className='w-[80%] px-6 md:px-10 py-3 md:w-[40%] rounded-xl shadow-2xl text-[#FAF2F2] bg-[#2E303E]' >
 
           <div>
           <p className='font-bold'>Username</p>
           <input type='text' placeholder='Create your username' className='w-[90%] p-3 mt-3 bg-transparent outline-none' name="username" value={profile.username} onChange={handleChange} required/>
           </div>
-
 
           <div className='mt-5'>
           <p className='font-bold'>Email</p>
@@ -129,11 +126,10 @@ const logOut = () => {
           <input type='password' placeholder='Create your password' className='w-[90%] p-3 mt-3 bg-transparent outline-none' name="password" value={profile.password} onChange={handleChange} required/>
           </div>
 
-
           <div className='flex flex-col text-white items-center gap-3'>
           {isLoadingw ? (<button className=' bg-[#242832] rounded-xl p-3 w-[80%] font-bold' type='submit'>Sign up</button>    ): (
             <BeatLoader size={20} color='red'   />)} 
-      <button onClick={() => signinWithGoogle()}   className='bg-[#0652DD] p-3 rounded-xl w-[90%] font-bold' >Sign in with Google 🚀 </button> 
+          <button onClick={() => signinWithGoogle()}   className='bg-[#0652DD] p-3 rounded-xl w-[90%] font-bold' >Sign in with Google 🚀 </button> 
           </div>
           <p className='text-center'>
           <h6>Already have an account ? 
@@ -148,7 +144,7 @@ const logOut = () => {
         <div className='bg-white'>
         </div>
      </section>
-    </motion.div>
+  </motion.div>
 
   )
 }
