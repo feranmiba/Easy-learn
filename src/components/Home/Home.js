@@ -4,14 +4,12 @@ import girl from '../Image/girls-book.png'
 import { FaArrowRightLong } from "react-icons/fa6";
 import { motion } from 'framer-motion';
 import About from './About';
+import Cookie from 'js-cookie'
 
 function Home() {
   return ( 
     <div className=' text-[#FAF2F2] '>
       <section className='flex flex-col-reverse md:flex-row  md:flex md:justify-between p-8 lg:p-14'>
-
-
-
       <motion.div   initial={{ x: -250, opacity:0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{

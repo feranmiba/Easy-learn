@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import { BeatLoader } from 'react-spinners'
 import { googleLogout, useGoogleLogin } from '@react-oauth/google';
+import Cookies from 'js-cookie'
 
 function SignUp() {
   const api = process.env.REACT_APP_BACKEND;
@@ -19,6 +20,11 @@ function SignUp() {
   const [show, setShow] = useState(Boolean)
   const [errMesssage, setErrMessage] = useState("")
 
+  useEffect(() => {
+    Cookies.set("user_token", "abc123", { expires: 7, path: "/" })
+  }, [])
+
+  const userToken = Cookies.get("user_token")
   const showErrorMessges = () => {
     setShow(!show)
     setTimeout(() => {
@@ -36,7 +42,7 @@ function SignUp() {
     setisLoading(false)
     setTimeout(() => {
       setisLoading(true)
-    }, 2000)
+    }, 10000)
   }
 
 

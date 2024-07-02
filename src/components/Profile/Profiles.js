@@ -75,7 +75,7 @@ function Profiles() {
       load()
       axios.get(`${api}/courses/${code}`).then(res => {
         if (res.data) {
-          navigate("/class", {state: { courseName: res.data.courseName, content: res.data.courseContent}})
+          navigate("/class", {state: { courseName: res.data.courseName, content: res.data.courseContent, code: res.data.courseCode}})
         }
       })
     } catch (error) {
